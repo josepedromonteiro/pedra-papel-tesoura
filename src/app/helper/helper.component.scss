@@ -1,0 +1,28 @@
+app-helper {
+  h1 {
+    font-weight: bold;
+    padding: 16px;
+  }
+
+  li {
+    margin-bottom: 5px;
+  }
+
+
+  .image {
+    padding: 20px;
+    background-color: white;
+    border-radius: 30px;
+    margin: 50px auto;
+    height: 300px;
+    width: 400px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+    img {
+      margin: auto;
+      height: 100%;
+    }
+  }
+}

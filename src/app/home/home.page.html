@@ -1,20 +1,64 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>
+            Pedra Papel Tesoura
+        </ion-title>
+
+        <ion-buttons collapse="true" slot="end">
+            <ion-button (click)="presentModal()">
+                <ion-icon slot="icon-only" name="help-circle-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-header collapse="condense">
+        <ion-toolbar>
+            <ion-title size="large">Pedra Papel Tesoura</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <div class="showBanner" [ngClass]="showNote? 'show': 'hide'">
+        {{whoWins ? ('Ganhou o ' + whoWins + ' !') : 'Ficou empatado !'}}
+    </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <div class="container">
+        <div class="play" (click)="play()" *ngIf="!isPlaying">
+            <ion-button expand="block">Jogar</ion-button>
+        </div>
+        <div class="col-50 computer">
+            <div class="points">
+                <div class="value">{{humanPoints}}</div>
+                <div class="label">Pontos</div>
+            </div>
+            <div class="box inverse">
+                <img *ngIf="activeHumanItem" [src]="activeHumanItem.image">
+            </div>
+            <h1 class="player">Humano</h1>
+
+
+            <div class="container">
+                <div class="image-button ion-activatable" *ngFor="let image of images" (click)="aposta(image)">
+                    <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+                    <img [src]="image.image" />i
+                </div>
+            </div>
+        </div>
+
+        <div class="col-50 human">
+            <div class="points">
+                <div class="value">{{playerPoints}}</div>
+                <div class="label">Pontos</div>
+            </div>
+            <div class="box">
+                <img [src]="activeComputerItem.image">
+            </div>
+            <h1 class="player">Computador</h1>
+        </div>
+
+    </div>
 </ion-content>
+
+<div class="helper">
+
+</div>
